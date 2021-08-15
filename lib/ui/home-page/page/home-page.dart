@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-
   int availableBalance = 0;
   // int _totalBalance = 0;
   int bonusMoneyInSecond = 0;
