@@ -52,33 +52,39 @@ class HomePageState extends State<HomePage> {
           // margin: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
           child: Column(
             children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+              ),
               Text("Украдено шекелей: $availableBalance"),
               Text("Шекелей на секунду: $bonusMoneyInSecond"),
-
-              ElevatedButton(
-                  style: ButtonStyle(
+              Container(
+                constraints: BoxConstraints.tightFor(height: 50),
+                child: ElevatedButton(
+                    style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.black),
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 16.0))
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      availableBalance += 1;
-                    });
-                  },
-                  child: new Center(
-                    // padding: EdgeInsets.symmetric(vertical: 16.0),
-                    // color: Colors.black,
-                      child: new Container(
+                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 16.0)),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        availableBalance += 1;
+                      });
+                    },
+                    child: new Center(
+                      // padding: EdgeInsets.symmetric(vertical: 16.0),
+                      // color: Colors.black,
+                        child: new Container(
 
-                        child: new Text("Украсть шекель", style: TextStyle(color: Colors.white)),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5.0)),),
+                          child: new Text("Украсть шекель", style: TextStyle(color: Colors.white)),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5.0)),),
 
-                      )
-                  )
+                        )
+                    )
+                ),
               ),
 
               new Expanded(
                 child: new ListView.builder(
+                  //physics: NeverScrollableScrollPhysics(),
                   itemCount: incomeTypes.length,
                   itemBuilder: (context, numberOfRow) {
                     return BuyButton(incomeType: incomeTypes[numberOfRow], rootWidget: this);
